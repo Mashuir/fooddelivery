@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelivery/consts/category_model.dart';
 import 'package:fooddelivery/consts/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,6 +146,24 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                children: [
+                  ...List.generate(
+                      myCategories.length,
+                      (index) => GestureDetector(
+                            child: Container(
+                              height: 105,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                          ))
+                ],
+              ),
+            )
           ],
         ),
       ),
