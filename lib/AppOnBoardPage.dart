@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:fooddelivery/consts/colors.dart';
+import 'package:fooddelivery/main_page.dart';
 import 'consts/onboard_model.dart';
 
 class AppOnBoardPage extends StatefulWidget {
@@ -104,7 +105,12 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MainPage()));
+                      },
                       color: korange,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
