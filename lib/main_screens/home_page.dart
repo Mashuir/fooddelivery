@@ -24,45 +24,45 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const Expanded(
                       child: Column(
-                    children: [
-                      Row(
                         children: [
-                          Text(
-                            "Your Location",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            color: kblack,
-                            size: 20,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 6),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: korange,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "Mashiur, Dhaka",
-                            style: TextStyle(
-                                fontSize: 16,
+                          Row(
+                            children: [
+                              Text(
+                                "Your Location",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_down,
                                 color: kblack,
-                                fontWeight: FontWeight.w600),
+                                size: 20,
+                              )
+                            ],
+                          ),
+                          SizedBox(height: 6),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: korange,
+                                size: 20,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Mashiur, Dhaka",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: kblack,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  )),
+                      )),
                   Row(
                     children: [
                       Container(
@@ -149,16 +149,64 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ...List.generate(
                       myCategories.length,
-                      (index) => GestureDetector(
+                          (index) =>
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
                             child: Container(
                               height: 105,
-                              width: 80,
+                              width: 90,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: selectedIndex == index
+                                      ? Border.all(width: 2.5, color: korange)
+                                      : Border.all(color: Colors.white)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        width: 47,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color:
+                                                  kblack.withOpacity(0.4),
+                                                  offset: const Offset(0, 10),
+                                                  blurRadius: 12,
+                                                  spreadRadius: 5)
+                                            ]),
+                                      ),
+                                      Image.asset(
+                                        myCategories[index].image,
+                                        width: 50,
+                                        fit: BoxFit.cover,
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    myCategories[index].name,
+                                    style: const TextStyle(
+                                        color: kblack,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                                ],
+                              ),
                             ),
                           ))
                 ],
