@@ -24,7 +24,7 @@ List<MyProductModel> myProductModel = [
     category: "Ramen",
   ),
   MyProductModel(
-    image: 'assets/food-delivery(foodel)/ramen/kurume_ramen.png',
+    image: icKurumeRamen,
     name: 'Kurume Ramen',
     price: 4.3,
     rate: 4.9,

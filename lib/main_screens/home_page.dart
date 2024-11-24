@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooddelivery/consts/category_model.dart';
 import 'package:fooddelivery/consts/colors.dart';
 import 'package:fooddelivery/consts/product_model.dart';
+import 'package:fooddelivery/widgets/food_product_items.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,41 +18,51 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            headerParts(),
-            const SizedBox(height: 35),
-            bannerTextParts(),
-            const SizedBox(height: 35),
-            categoryParts(),
-            const SizedBox(height: 25),
-            categoryListParts(),
-            const SizedBox(height: 25),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                "Result (40)",
-                style: TextStyle(
-                    color: kblack.withOpacity(0.6),
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: -.2),
-              ),
+        child: SingleChildScrollView(
+          //scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                headerParts(),
+                const SizedBox(height: 35),
+                bannerTextParts(),
+                const SizedBox(height: 35),
+                categoryParts(),
+                const SizedBox(height: 25),
+                categoryListParts(),
+                const SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Result (40)",
+                    style: TextStyle(
+                        color: kblack.withOpacity(0.6),
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: -.2),
+                  ),
+                ),
+                const SizedBox(height: 25),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      ...List.generate(
+                          myProductModel.length,
+                          (index) => Padding(
+                                padding: index == 0
+                                    ? const EdgeInsets.only(left: 25, right: 25)
+                                    : const EdgeInsets.only(right: 25),
+                                child: FoodProductItems(
+                                    myProductModel: myProductModel[index]),
+                              ))
+                    ],
+                  ),
+                ), const SizedBox(height: 25),
+              ],
             ),
-            const SizedBox(height: 25),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ...List.generate(
-                      myProductModel.length,
-                      (index) => Padding(
-                          padding: index == 0
-                              ? const EdgeInsets.only(left: 25, right: 25)
-                              : const EdgeInsets.only(right: 25)))
-                ],
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );
@@ -59,7 +70,7 @@ class _HomePageState extends State<HomePage> {
 
   Padding categoryListParts() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -137,7 +148,7 @@ class _HomePageState extends State<HomePage> {
 
   Padding categoryParts() {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -171,7 +182,7 @@ class _HomePageState extends State<HomePage> {
 
   Padding headerParts() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           const Expanded(
