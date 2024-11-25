@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 25),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   child: Row(
                     children: [
                       ...List.generate(

@@ -32,7 +32,7 @@ List<MyProductModel> myProductModel = [
     category: "Ramen",
   ),
   MyProductModel(
-    image: icKurumeRamen,
+    image: icHakataRamen,
     name: 'Hakata Ramen',
     price: 3.9,
     distance: 400,

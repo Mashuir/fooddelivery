@@ -7,6 +7,7 @@ const icPancake = "assets/images/pancake.png";
 const icBurger = "assets/images/burger.png";
 const icMisoRamen = "assets/images/sapporo_miso_ramen.png";
 const icKurumeRamen = "assets/images/kurume_ramen.png";
+const icHakataRamen = "assets/images/hakata_ramen.png";
 const icShrimpRice = "assets/images/shrimp_fried_rice.png";
 const icFullsetRamen = "assets/images/fullset_ramen.png";
 const icBerryWaffle = "assets/images/berry-bonanza-waffle.png";
